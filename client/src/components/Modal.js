@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { socket } from '../service/socket';
+import React from 'react';
 import './Modal.scss';
 
 export default function Modal({ winner, start, setPlayer, didYouWin }) {
