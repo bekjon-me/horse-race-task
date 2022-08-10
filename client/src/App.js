@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import './assets/main.scss';
 import Modal from './components/Modal';
 import Racer from './components/Racer';
@@ -7,13 +7,28 @@ import { socket } from './service/socket';
 function App() {
   const [horses, setHorses] = useState([]);
 
-  const opacity = useRef(1);
-  const modal = useRef(true);
-  const winner = useRef();
-  const player = useRef(null);
+  let variables = useRef({
+    horseNum: null,
+    opacity: 1,
+    modal: true,
+    winner: '',
+    player: '',
+    gameOver: false,
+    didYouWin: '',
+  });
 
   const startGame = () => {
-    modal.current = false;
+    variables.current = {
+      ...variables.current,
+      player: '',
+      gameOver: false,
+      opacity: 1,
+      modal: false,
+      didYouWin: '',
+      winner: '',
+    };
+
+    socket.connect();
     socket.emit('start');
     socket.on('ticker', (response) => {
       const res = Array.isArray(response) ? response : [response];
@@ -22,28 +37,42 @@ function App() {
   };
 
   const setPlayer = (num) => {
-    modal.current = false;
+    variables.current = {
+      ...variables.current,
+      gameOver: false,
+      opacity: 1,
+      modal: false,
+      horseNum: num,
+    };
+
+    socket.connect();
     socket.emit('start');
     socket.on('ticker', (response) => {
       const res = Array.isArray(response) ? response : [response];
       setHorses(res);
-      player.current = res[num].name;
+      variables.current.player = res[num]['name'];
     });
   };
-
   horses.forEach((horse) => {
     if (horse.distance === 1000) {
-      socket.close();
-      if (player.current) {
-        if (horse.name === player.current) {
-          alert('You win');
+      variables.current.gameOver = true;
+      if (variables.current.player) {
+        if (horse.name === variables.current.player) {
+          variables.current.didYouWin = 'You win';
         } else {
-          alert('you lost');
+          variables.current.didYouWin = 'You lost';
         }
       }
-      modal.current = true;
-      winner.current = 'The winner is ' + horse.name;
-      opacity.current = 0.3;
+      variables.current = {
+        ...variables.current,
+        winner: 'The winner is ' + horse.name,
+        opacity: 0.3,
+        modal: true,
+      };
+
+      setHorses(horses.map((horse) => (horse.distance = 0)));
+      socket.removeAllListeners();
+      socket.disconnect();
     }
   });
 
@@ -52,20 +81,22 @@ function App() {
       {horses?.map((horse, index) => {
         return (
           <Racer
-            opacity={opacity.current}
-            key={horse.name}
+            opacity={variables.current.opacity}
+            key={index}
             name={horse.name}
-            distance={horse.distance}
+            distance={variables.current.gameOver ? 0 : horse.distance}
             number={index + 1}
+            isPlayer={index === variables.current.horseNum ? 'You' : ''}
           />
         );
       })}
-      {modal.current ? (
+      {variables.current.modal ? (
         <Modal
-          winner={winner.current}
+          winner={variables.current.winner}
           start={startGame}
-          player={player}
+          player={variables.current.player}
           setPlayer={setPlayer}
+          didYouWin={variables.current.didYouWin}
         />
       ) : (
         ''

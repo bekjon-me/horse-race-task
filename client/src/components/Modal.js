@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { socket } from '../service/socket';
 import './Modal.scss';
 
-export default function Modal({ winner, start, setPlayer }) {
+export default function Modal({ winner, start, setPlayer, didYouWin }) {
   return (
     <div className="container">
       <h2>{winner}</h2>
-      <button onClick={start}> Just start</button>
+      <h2>{didYouWin}</h2>
+      <button className="start" onClick={start}>
+        Just start
+      </button>
       <br />
-      which number horse will you choose? <br />
+      Which number horse will you choose? <br />
       <div className="grid">
         <button onClick={() => setPlayer(0)}>1</button>
         <button onClick={() => setPlayer(1)}>2</button>

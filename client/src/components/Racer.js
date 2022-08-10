@@ -2,7 +2,7 @@ import React from 'react';
 import './RacerDefault.scss';
 import './Racer.scss';
 
-function Racer({ name, distance, opacity, number }) {
+function Racer({ name, distance, opacity, number, isPlayer }) {
   return (
     <div
       className="line"
@@ -18,6 +18,7 @@ function Racer({ name, distance, opacity, number }) {
           left: distance / 10 + '%',
         }}
       >
+        <h2 className="you">{isPlayer}</h2>
         <div className="front-leg right">
           <div className="shoulder">
             <div className="upper">

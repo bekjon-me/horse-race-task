@@ -26,5 +26,12 @@
   position: absolute;
   transition: left 2s linear;
   left: 0;
-  transform: rotate();
+  .you {
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    top: -20px;
+    left: 40px;
+    transform: rotateY(180deg);
+  }
 }
