@@ -12,14 +12,17 @@ function Racer({ name, distance, opacity, number, isPlayer }) {
       }}
     >
       <div className="start"></div>
-      <h2>{name + ' ' + number}</h2>
+      <h2 data-testid="nameNum">{name + ' ' + number}</h2>
       <div
         className="🐴 animate"
+        data-testid="distance"
         style={{
           left: distance / 10 + '%',
         }}
       >
-        <h2 className="you">{isPlayer}</h2>
+        <h2 data-testid="isPlayer" className="you">
+          {isPlayer}
+        </h2>
         <div className="front-leg right">
           <div className="shoulder">
             <div className="upper">

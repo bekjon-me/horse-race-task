@@ -5,7 +5,7 @@ export default function Modal({ winner, start, setPlayer, didYouWin }) {
   return (
     <div className="container">
       <h2 data-testid="winner">{winner}</h2>
-      <h2>{didYouWin}</h2>
+      <h2 data-testid="didYouWin">{didYouWin}</h2>
       <button className="start" onClick={start}>
         Just start
       </button>
