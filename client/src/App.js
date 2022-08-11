@@ -94,7 +94,6 @@ function App() {
         <Modal
           winner={variables.current.winner}
           start={startGame}
-          player={variables.current.player}
           setPlayer={setPlayer}
           didYouWin={variables.current.didYouWin}
         />

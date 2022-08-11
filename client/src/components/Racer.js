@@ -5,6 +5,7 @@ import './Racer.scss';
 function Racer({ name, distance, opacity, number, isPlayer }) {
   return (
     <div
+      data-testid="opacity"
       className="line"
       style={{
         opacity: opacity,
