@@ -1,48 +1,35 @@
-# Front-End Developer test task
-We want you to implement a small web app which can display horse betting status.
+# Horce race task
 
-Information about distance run by horse is available from a locally running server.
-Any additional visual enhancements will be a plus. 
-Be sure that your application is tested well.
+> Website created by Bekjon Ishpulatov for test assignment
 
-## Requirements:
-- web app have to take data from local server
-- web app have to show horse run distance in real time 
+## Built With
 
-Ideas on how horse running progress can look like is up to you.
+- ReactJS
+- Web socket
 
-You should use following stack:
-- React (preferable with hooks)
-- Redux (with Redux-Thunk or any other Redux middleware you are familiar) or any other state-manager library you want
-- Socket.io - to connect to the server
-- any UI library you want, or you can use just pure CSS
-- Testing Library
+## Live Demo
 
-We will assess by following criteria:
-- How you application works
-- Project structure, files and folders organization
-- Code quality, readability, etc.
-- React knowledge
-- Clean and understandable git history
+[Heroku Link](https://horserace2.herokuapp.com/)
 
-### How to run the server
-```cd server && npm install && npm run start```
-You can visit [http://localhost:3002](http://localhost:3002) to check that the service is working correctly and inspect the data it produces.
+## Author
 
-### How to run you web application
-```cd client && npm install && npm run start```
-You can visit [http://localhost:3000](http://localhost:3000) to check that web app is working correctly.
+- GitHub: [@bekjon-me](https://github.com/bekjon-me)
+- LinkedIn: [LinkedIn](https://linkedin.com/in/bekjonishpulatov)
+- Hackerrank profile : [Hackerrank](https://www.hackerrank.com/bekjonishpulato1)
+- Leetcode profile: [Leetcode](https://leetcode.com/bekjonishpulatov8/)
 
-### How to run tests
-```cd client && npm run test```
+## 🤝 Contributing
 
-## How to complete the task
-1. Clone this repository
-2. Update code in `client` folder
-3. Share with us link to the repository
-4. Send us link to your repository
-5. Will be a plus if hosted also on Heroku
+Contributions, issues, and feature requests are welcome!
 
-Good luck!
+Feel free to check the [issues page](../../issues/).
 
-![Horses](https://raw.githubusercontent.com/zakhar-bozhok-jito/jun-frontend-test-task/main/horses.gif)
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- Hat tip to anyone whose code was used
+- Inspiration
+- etc
