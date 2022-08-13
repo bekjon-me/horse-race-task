@@ -1,7 +1,7 @@
 'use strict';
 const express = require('express');
 const http = require('http');
-const io = require('socket.i0');
+const io = require('socket.io');
 const cors = require('cors');
 
 const INTERVAL = 1000;
