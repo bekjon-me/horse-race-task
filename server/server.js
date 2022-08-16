@@ -90,6 +90,6 @@ socketServer.on('connection', (socket) => {
   });
 });
 
-http.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Streaming service is running on ${PORT}`);
 });
