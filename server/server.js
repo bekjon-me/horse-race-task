@@ -1,8 +1,13 @@
 'use strict';
 const express = require('express');
-const http = require('http');
-const io = require('socket.io');
 const cors = require('cors');
+
+const app = express();
+app.use(cors());
+const server = http.createServer(app);
+
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 
 const INTERVAL = 1000;
 const PORT = process.env.PORT || 3002;
@@ -66,10 +71,6 @@ function trackTickers(socket) {
     horses.map((horse) => (horse.distance = 0));
   });
 }
-
-const app = express();
-app.use(cors());
-const server = http.createServer(app);
 
 const socketServer = io(server, {
   cors: {
