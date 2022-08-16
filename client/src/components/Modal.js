@@ -1,10 +1,16 @@
 import React from 'react';
 import './Modal.scss';
 
-export default function Modal({ winner, start, setPlayer, didYouWin }) {
+export default function Modal({
+  winner,
+  start,
+  setPlayer,
+  didYouWin,
+  winnerNum,
+}) {
   return (
     <div className="container">
-      <h2 data-testid="winner">{winner}</h2>
+      <h2 data-testid="winner">{winner + ` (${winnerNum})`}</h2>
       <h2 data-testid="didYouWin">{didYouWin}</h2>
       <button className="start" onClick={start}>
         Just start

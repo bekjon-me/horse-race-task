@@ -15,6 +15,7 @@ function App() {
     player: '',
     gameOver: false,
     didYouWin: '',
+    winnerNum: null,
   });
 
   const startGame = () => {
@@ -26,6 +27,7 @@ function App() {
       modal: false,
       didYouWin: '',
       winner: '',
+      horseNum: null,
     };
 
     socket.connect();
@@ -53,9 +55,10 @@ function App() {
       variables.current.player = res[num]['name'];
     });
   };
-  horses.forEach((horse) => {
+  horses.forEach((horse, index) => {
     if (horse.distance === 1000) {
       variables.current.gameOver = true;
+      variables.current.winnerNum = index + 1;
       if (variables.current.player) {
         if (horse.name === variables.current.player) {
           variables.current.didYouWin = 'You win';
@@ -93,6 +96,7 @@ function App() {
       {variables.current.modal ? (
         <Modal
           winner={variables.current.winner}
+          winnerNum={variables.current.winnerNum}
           start={startGame}
           setPlayer={setPlayer}
           didYouWin={variables.current.didYouWin}
