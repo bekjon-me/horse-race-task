@@ -10,7 +10,7 @@ export default function Modal({
 }) {
   return (
     <div className="container">
-      <h2 data-testid="winner">{winner + ` (${winnerNum})`}</h2>
+      <h2 data-testid="winner">{winner + winnerNum}</h2>
       <h2 data-testid="didYouWin">{didYouWin}</h2>
       <button className="start" onClick={start}>
         Just start

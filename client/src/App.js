@@ -15,7 +15,7 @@ function App() {
     player: '',
     gameOver: false,
     didYouWin: '',
-    winnerNum: null,
+    winnerNum: '',
   });
 
   const startGame = () => {
@@ -96,7 +96,11 @@ function App() {
       {variables.current.modal ? (
         <Modal
           winner={variables.current.winner}
-          winnerNum={variables.current.winnerNum}
+          winnerNum={
+            variables.current.winnerNum
+              ? ` (${variables.current.winnerNum})`
+              : ''
+          }
           start={startGame}
           setPlayer={setPlayer}
           didYouWin={variables.current.didYouWin}
